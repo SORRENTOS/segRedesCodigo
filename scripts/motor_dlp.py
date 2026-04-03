@@ -23,7 +23,7 @@ def ofuscar_datos(log_crudo):
         if log_crudo == log_seguro:
            print("[!] INFO: No se detectaron cambios (Datos no encontrados o ya limpios).")
            print("cancelando proceso para proteger datos...")
-           return "[ERROR FALLO DEL DLP"
+           return "[ERROR] FALLO DEL DLP"
         else:
             print("[✔] DLP: Datos sensibles interceptados y ofuscados con exito.")
         
