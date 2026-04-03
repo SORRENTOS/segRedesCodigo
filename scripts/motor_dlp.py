@@ -10,7 +10,7 @@ def ofuscar_datos(log_crudo):
     # Los alumnos deben investigar o deducir la sintaxis exacta.
     # Pista: \b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b
     patron_ip = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
-    patron_rut = r"\b\d{1,2}(?:\.\d{3}){2}-[0-9Kk]\b|\b\d{7,8}-[0-9Kk]\b"
+    patron_rut = r"\b\d{7,8}[-.]?[0-9kK]\b"
 
     # 3. Aplicación de censura (Reemplazo)
     log_seguro = log_crudo
@@ -19,6 +19,13 @@ def ofuscar_datos(log_crudo):
     try:
         log_seguro = re.sub(patron_ip, "[IP_CENSURADA]", log_seguro)
         log_seguro = re.sub(patron_rut, "[RUT_CENSURADO]", log_seguro)
+        if log_crudo == log_seguro:
+           print("[!] INFO: No se detectaron cambios (Datos no encontrados o ya limpios).")
+           print("cancelando proceso para proteger datos...")
+           return
+        else:
+            print("[✔] DLP: Datos sensibles interceptados y ofuscados con exito.")
+        
     except re.error as e:
         print(f"[ERROR DLP] Sintaxis Regex Inválida: {e}")
         # FAIL-SAFE: Si el DLP falla, borramos todo el log por seguridad.
