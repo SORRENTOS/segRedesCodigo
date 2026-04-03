@@ -17,12 +17,13 @@ def ofuscar_datos(log_crudo):
     
     # Validamos que no explote si el alumno puso mal la regex
     try:
-        log_seguro = re.sub(patron_ip, "[IP_CENSURADA]", log_seguro)
         log_seguro = re.sub(patron_rut, "[RUT_CENSURADO]", log_seguro)
+
+        log_seguro = re.sub(patron_ip, "[IP_CENSURADA]", log_seguro)
         if log_crudo == log_seguro:
            print("[!] INFO: No se detectaron cambios (Datos no encontrados o ya limpios).")
            print("cancelando proceso para proteger datos...")
-           return
+           return "[ERROR FALLO DEL DLP"
         else:
             print("[✔] DLP: Datos sensibles interceptados y ofuscados con exito.")
         
