@@ -95,11 +95,16 @@ if __name__ == "__main__":
         rut = input()
         print("porfavor indique una ip")
         ip = input()
-        payload_simulado = (
-        f"Alerta 404: Múltiples ataques de fuerza bruta detectados desde la IP {ip} "
-        f"y tráfico anómalo desde 10.0.0.5 hacia el usuario administrador con RUT {rut} "
-        "en el puerto 22."
-    )
+        print("porfavor indique una ip del dispositivo atacado")
+        ip2 = input()
+        if not rut or not ip or not ip2:
+            print("ADVERTENCIA: Datos incompletos, usando valores de prueba...")
+        else:
+            payload_simulado = (
+            f"Alerta 404: Múltiples ataques de fuerza bruta detectados desde la IP {ip} "
+            f"y tráfico anómalo desde {ip2} hacia el usuario administrador con RUT {rut} "
+            "en el puerto 22."
+        )
     else:
         print("ERROR: opcion no valida")
 

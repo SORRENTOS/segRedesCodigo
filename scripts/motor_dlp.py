@@ -9,7 +9,7 @@ def ofuscar_datos(log_crudo):
     # 1. EL RETO REGEX 1: Direcciones IP (IPv4)
     # Los alumnos deben investigar o deducir la sintaxis exacta.
     # Pista: \b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b
-    patron_ip = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
+    patron_ip = r"\b\d{1,3}(?:\.\d{1,3}){1,3}\b"
     patron_rut = r"\b\d{7,8}[-.]?[0-9kK]\b"
 
     # 3. Aplicación de censura (Reemplazo)
