@@ -5,20 +5,16 @@ def ofuscar_datos(log_crudo):
     MOTOR DLP FINTECH SUR - CUMPLIMIENTO LEY 21.719
     Este módulo intercepta telemetría y censura PII antes de enviarla a la IA.
     """
-    
-    # 1. EL RETO REGEX 1: Direcciones IP (IPv4)
-    # Los alumnos deben investigar o deducir la sintaxis exacta.
-    # Pista: \b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b
-    patron_ip = r"\b\d{1,3}(?:\.\d{1,3}){1,3}\b"
-    patron_rut = r"\b\d{7,8}[-.]?[0-9kK]\b"
+
 
     # 3. Aplicación de censura (Reemplazo)
     log_seguro = log_crudo
     
     # Validamos que no explote si el alumno puso mal la regex
     try:
+        patron_rut = r"\b\d{1,2}(?:\.?\d{3}){2}[-.]?[0-9kK]\b"
         log_seguro = re.sub(patron_rut, "[RUT_CENSURADO]", log_seguro)
-
+        patron_ip = r"\b(?:\d{1,3}\.){3}\d{1,3}\b"
         log_seguro = re.sub(patron_ip, "[IP_CENSURADA]", log_seguro)
         if log_crudo == log_seguro:
            print("[!] INFO: No se detectaron cambios (Datos no encontrados o ya limpios).")
