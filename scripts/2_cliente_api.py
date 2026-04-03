@@ -3,6 +3,7 @@ import asyncio
 import os
 from dotenv import load_dotenv
 import time
+import json
 
 # 1. Cargar la bóveda de secretos corporativos
 print("[*] Iniciando secuencia de arranque SOC...")
@@ -78,7 +79,7 @@ Estructura matemática requerida:
     except Exception as e:
         print(f"[ERROR SISTEMA] Falla de conexión de red: {e}")
         return None
-    import json
+
 
 async def main():
     # Simulamos un ataque interceptado por nuestro IDS local
