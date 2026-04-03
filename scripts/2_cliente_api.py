@@ -50,7 +50,7 @@ Estructura matemática requerida:
 }
 """
     data = {
-        "model": "llama3-8b-8192", # Modelo ultra-rápido de Groq
+        "model": "llama3.1-8b-instant", # Modelo ultra-rápido de Groq
         "messages": [
             {"role": "system", "content": prompt_sistema},
             {"role": "user", "content": f"Evento detectado: {payload_log}"}
