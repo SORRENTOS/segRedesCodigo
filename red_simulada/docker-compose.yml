@@ -1,0 +1,6 @@
+version: '3'
+services:
+  servidor_web_vulnerable:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
