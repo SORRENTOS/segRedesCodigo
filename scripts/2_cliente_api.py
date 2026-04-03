@@ -98,7 +98,7 @@ async def main():
             print("\n--- REPORTE DE EXTRACCIÓN FINTECH SUR ---")
             print(f"Riesgo Evaluado: {datos_estructurados.get('nivel_riesgo', 'DESCONOCIDO')}")
             print(f"Objetivo Hostil: {datos_estructurados.get('ip_atacante', 'NO_ENCONTRADA')}")
-            print(f"Mitigación SOC: {datos_estructurados.get('accion_recommended', 'NINGUNA')}")
+            print(f"Mitigación SOC: {datos_estructurados.get('accion_recomendada', 'NINGUNA')}")
             print("---------------------------------------")
 
         except json.JSONDecodeError:
