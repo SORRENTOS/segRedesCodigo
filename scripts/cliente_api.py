@@ -83,6 +83,9 @@ Estructura matemática requerida:
 
 async def main():
     # Simulamos un ataque interceptado por nuestro IDS local
+    
+
+
     evento_falso = "Múltiples intentos fallidos de login SSH (root) desde IP 192.168.1.100 en el servidor web."
 
     print(f"\n[*] Analizando telemetría: '{evento_falso}'")

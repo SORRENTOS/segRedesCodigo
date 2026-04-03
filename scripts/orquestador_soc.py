@@ -81,12 +81,28 @@ async def pipeline_defensivo(evento_crudo):
 # =====================================================================
 if __name__ == "__main__": 
     # Payload de prueba con IP real y RUT para verificar DLP [cite: 22, 33]
+    print("seleccione el tipo de prueba: \n 1) simulacion por defecto \n 2) rut y ip personalizados")
+    opcion = input()
     payload_simulado = (
         "Alerta 404: Múltiples ataques de fuerza bruta detectados desde la IP 192.168.1.100 "
         "y tráfico anómalo desde 10.0.0.5 hacia el usuario administrador con RUT 18.123.456-K "
         "en el puerto 22."
     )
-    
+    if opcion == "1":
+        print("Iniciando prueba por defecto...")
+    elif opcion == "2":
+        print("porfavor indique un rut")
+        rut = input()
+        print("porfavor indique una ip")
+        ip = input()
+        payload_simulado = (
+        f"Alerta 404: Múltiples ataques de fuerza bruta detectados desde la IP {ip} "
+        f"y tráfico anómalo desde 10.0.0.5 hacia el usuario administrador con RUT {rut} "
+        "en el puerto 22."
+    )
+    else:
+        print("ERROR: opcion no valida")
+
     print("[*] Iniciando Orquestador SOC Fintech Sur...\n") 
     
     # Se dispara el bucle de eventos asíncrono con el log de prueba [cite: 22, 33]
