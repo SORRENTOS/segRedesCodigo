@@ -75,7 +75,7 @@ if __name__ == "__main__":
     
     # Prueba 1: Una IP legítima
     aislar_atacante("192.168.1.50")
-    
-    # Prueba 2: Un intento de Inyección de Comandos
-    # Gracias al Hito 1, esto NO ejecutará el comando 'rm -rf'
+    #ip no legitima
+    aislar_atacante("200.5.123.10")    
+  
     aislar_atacante("8.8.8.8; rm -rf /")
