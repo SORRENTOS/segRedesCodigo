@@ -74,7 +74,7 @@ if __name__ == "__main__":
     print("=====================================================")
     
     # Prueba 1: Una IP legítima
-    aislar_atacante("192.168.1.50")
+    aislar_atacante("192.168.1.1")
     #ip no legitima
     aislar_atacante("200.5.123.10")    
   
