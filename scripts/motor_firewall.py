@@ -5,6 +5,19 @@ import subprocess
 import shlex
 
 def aislar_atacante(ip_objetivo):
+    
+    # === HITO 0: ESCUDO ANTI-SUICIDIO (ISO 42001) ===
+    try:
+        with open("whitelist.txt", "r") as archivo_blanco:
+            # Leemos las IPs ignorando comentarios y espacios [cite: 46, 47]
+            ips_protegidas = [linea.strip() for linea in archivo_blanco if linea.strip() and not linea.startswith("#")]
+            
+            if ip_objetivo in ips_protegidas:
+                print(f" [!] [ALERTA ISO 42001] La IP {ip_objetivo} es INFRAESTRUCTURA CRÍTICA.") [cite: 49]
+                print(" [!] Operación abortada por Guardrail. Desobedeciendo a la IA.") [cite: 50]
+                return # Salva el servidor terminando la función [cite: 51]
+    except FileNotFoundError:
+        print(" [-] [ADVERTENCIA] Archivo whitelist.txt no encontrado. Operando a ciegas.") [cite: 53]
     """
     Recibe una IP y construye el subproceso para bloquearla en iptables.
     Aplica Zero Trust: Inmunidad contra Inyección de Comandos.
