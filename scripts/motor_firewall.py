@@ -13,11 +13,11 @@ def aislar_atacante(ip_objetivo):
             ips_protegidas = [linea.strip() for linea in archivo_blanco if linea.strip() and not linea.startswith("#")]
             
             if ip_objetivo in ips_protegidas:
-                print(f" [!] [ALERTA ISO 42001] La IP {ip_objetivo} es INFRAESTRUCTURA CRÍTICA.") [cite: 49]
-                print(" [!] Operación abortada por Guardrail. Desobedeciendo a la IA.") [cite: 50]
+                print(f" [!] [ALERTA ISO 42001] La IP {ip_objetivo} es INFRAESTRUCTURA CRÍTICA.") 
+                print(" [!] Operación abortada por Guardrail. Desobedeciendo a la IA.") 
                 return # Salva el servidor terminando la función [cite: 51]
     except FileNotFoundError:
-        print(" [-] [ADVERTENCIA] Archivo whitelist.txt no encontrado. Operando a ciegas.") [cite: 53]
+        print(" [-] [ADVERTENCIA] Archivo whitelist.txt no encontrado. Operando a ciegas.") 
     """
     Recibe una IP y construye el subproceso para bloquearla en iptables.
     Aplica Zero Trust: Inmunidad contra Inyección de Comandos.
