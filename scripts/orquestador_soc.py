@@ -26,7 +26,7 @@ async def pipeline_defensivo(evento_crudo):
     # HITO 2.5: CAPTURA TÁCTICA DE LA IP (Visión Táctica)
     # Extraemos la IP real ANTES de que el DLP la censure 
     # ---------------------------------------------------------------------
-    ip_real_match = re.search(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b', evento_crudo)
+    ip_real_match = re.search(r'\b(?:(?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4}|(?:[a-fA-F0-9]{1,4}:){1,7}:|(?:[a-fA-F0-9]{1,4}:){1,6}:[a-fA-F0-9]{1,4}|(?:[a-fA-F0-9]{1,4}:){1,5}(?::[a-fA-F0-9]{1,4}){1,2}|(?:[a-fA-F0-9]{1,4}:){1,4}(?::[a-fA-F0-9]{1,4}){1,3}|(?:[a-fA-F0-9]{1,4}:){1,3}(?::[a-fA-F0-9]{1,4}){1,4}|(?:[a-fA-F0-9]{1,4}:){1,2}(?::[a-fA-F0-9]{1,4}){1,5}|[a-fA-F0-9]{1,4}:(?::[a-fA-F0-9]{1,4}){1,6}|:(?::[a-fA-F0-9]{1,4}){1,7}|::)\b', evento_crudo)
     ip_hostil_real = ip_real_match.group(0) if ip_real_match else "NO_ENCONTRADA"
 
     if ip_hostil_real != "NO_ENCONTRADA":
@@ -75,6 +75,7 @@ async def pipeline_defensivo(evento_crudo):
             print("=====================================================\n")
 
             # ACTIVACIÓN DE DEFENSA AUTOMÁTICA [cite: 10]
+            print(ip_hostil_real)
             if nivel_riesgo in ["ALTO", "CRITICO"] and ip_hostil_real != "NO_ENCONTRADA":
                 print(f"[*] 4. ACTIVADO. Transfiriendo IP REAL {ip_hostil_real} al Motor de Firewall...")
                 # Llamada al módulo del Lab 7

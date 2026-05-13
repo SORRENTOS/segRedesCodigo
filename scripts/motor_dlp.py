@@ -28,7 +28,7 @@ def ofuscar_datos(log_crudo):
         # FAIL-SAFE: Si el DLP falla, borramos todo el log por seguridad.
         return "[ERROR] LOG DESTRUIDO POR FALLA DE DLP"
 
-    return log_seguro
+    return log_seguro 
 
 if __name__ == "__main__":
     # --- ENTORNO DE PRUEBAS (UNIT TESTING LOCAL) ---
