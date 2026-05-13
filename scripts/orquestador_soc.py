@@ -26,7 +26,7 @@ async def pipeline_defensivo(evento_crudo):
     # HITO 2.5: CAPTURA TÁCTICA DE LA IP (Visión Táctica)
     # Extraemos la IP real ANTES de que el DLP la censure 
     # ---------------------------------------------------------------------
-    ip_real_match = re.search(r'\b(?:(?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4}|(?:[a-fA-F0-9]{1,4}:){1,7}:|(?:[a-fA-F0-9]{1,4}:){1,6}:[a-fA-F0-9]{1,4}|(?:[a-fA-F0-9]{1,4}:){1,5}(?::[a-fA-F0-9]{1,4}){1,2}|(?:[a-fA-F0-9]{1,4}:){1,4}(?::[a-fA-F0-9]{1,4}){1,3}|(?:[a-fA-F0-9]{1,4}:){1,3}(?::[a-fA-F0-9]{1,4}){1,4}|(?:[a-fA-F0-9]{1,4}:){1,2}(?::[a-fA-F0-9]{1,4}){1,5}|[a-fA-F0-9]{1,4}:(?::[a-fA-F0-9]{1,4}){1,6}|:(?::[a-fA-F0-9]{1,4}){1,7}|::)\b', evento_crudo)
+    ip_real_match = re.search(r"hostil\s+((?:(?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4}|::))", evento_crudo)
     ip_hostil_real = ip_real_match.group(0) if ip_real_match else "NO_ENCONTRADA"
 
     if ip_hostil_real != "NO_ENCONTRADA":
