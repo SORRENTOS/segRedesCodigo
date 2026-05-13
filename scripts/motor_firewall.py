@@ -29,7 +29,10 @@ def aislar_atacante(ip_objetivo):
     # =====================================================================
     # Se utiliza una lista para evitar ataques de inyección de comandos.
     # El comando final será: sudo iptables -A INPUT -s [IP] -j DROP
-    comando_iptables = ["sudo", "iptables", "-A", "INPUT", "-s", ip_objetivo, "-j", "DROP"]
+    comando_base = "ip6tables" if ":" in ip_objetivo else "iptables"
+    
+
+    comando_iptables = ["sudo", comando_base, "-A", "INPUT", "-s", ip_objetivo, "-j", "DROP"]
 
     # AUDITORÍA VISUAL: Mostramos cómo el OS interpretará la orden
     comando_seguro_texto = shlex.join(comando_iptables)
