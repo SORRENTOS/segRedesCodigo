@@ -95,8 +95,9 @@ if __name__ == "__main__":
     opcion = input()
     
     payload_simulado = (
-        "[ALERTA CRÍTICA SOC] Ataque detectado desde IP 203.0.113.45. "
-        "RUT comprometido: 19.876.543-K. Nivel de amenaza: CRÍTICO."
+        "[ALERTA IDS] Túnel IPv6 detectado. Origen: 2001:0db8:85a3:0000:0000:8a2e:0370:7334 "
+    "intentando sincronización con servidor interno. "
+    "Usuario RUT 12.345.678-9 autenticado en sesión paralela."
     )
 
     if opcion == "2":
