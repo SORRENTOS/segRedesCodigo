@@ -29,13 +29,16 @@ async def pipeline_defensivo(evento_crudo):
 # ---------------------------------------------------------------------
     # HITO 2.5: CAPTURA TÁCTICA DE LA IP (Visión Táctica)
 
-    ip_real_match = re.search(r"(?:hostil|atacante)\s+((?:(?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4}|::))", evento_crudo)
+    patron_universal = r"(?:hostil|atacante|desde IP)\s+((?:(?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4}|::))|((?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4})"
     
-
-    ip_hostil_real = ip_real_match.group(1) if ip_real_match else "NO_ENCONTRADA"
-
-    if ip_hostil_real != "NO_ENCONTRADA":
-        print(f" [+] IP Real capturada y retenida en memoria: {ip_hostil_real} ")
+    match = re.search(patron_universal, evento_crudo, re.IGNORECASE)
+    
+    if match:
+        # Extraemos el grupo 1 (con contexto) o el grupo 2 (IP suelta)
+        ip_hostil_real = match.group(1) or match.group(2)
+        print(f" [+] IP Real capturada y retenida en memoria: {ip_hostil_real}")
+    else:
+        ip_hostil_real = "NO_ENCONTRADA"
 
     # =====================================================================
     # HITO 3: ESCUDO LEGAL (DLP) - LEY 21.719 
