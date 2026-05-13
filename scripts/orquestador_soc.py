@@ -76,11 +76,11 @@ async def pipeline_defensivo(evento_crudo):
 
             # ACTIVACIÓN DE DEFENSA AUTOMÁTICA [cite: 10]
             if nivel_riesgo in ["ALTO", "CRITICO"] and ip_hostil_real != "NO_ENCONTRADA":
-                print(f"[*] 4. ACTIVADO. Transfiriendo IP REAL {ip_hostil_real} al Motor de Firewall... [cite: 10]")
+                print(f"[*] 4. ACTIVADO. Transfiriendo IP REAL {ip_hostil_real} al Motor de Firewall...")
                 # Llamada al módulo del Lab 7
                 aislar_atacante(ip_hostil_real) 
             else:
-                print("[*] 4. Sin parámetros críticos o sin IP válida. No se requiere acción. [cite: 10]")
+                print("[*] 4. Sin parámetros críticos o sin IP válida. No se requiere acción.")
             
         except json.JSONDecodeError: 
             print("\n[CRÍTICO] La IA alucinó y no devolvió un JSON válido.") 
