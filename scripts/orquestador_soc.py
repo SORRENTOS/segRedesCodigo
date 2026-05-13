@@ -84,7 +84,7 @@ async def pipeline_defensivo(evento_crudo):
 
             # ACTIVACIÓN DE DEFENSA AUTOMÁTICA [cite: 10]
             print(ip_hostil_real)
-            if nivel_riesgo in ["ALTO", "CRITICO"] and ip_hostil_real != "NO_ENCONTRADA":
+            if nivel_riesgo in ["ALTO", "CRITICO","CRÍTICO"] and ip_hostil_real != "NO_ENCONTRADA":
                 print(f"[*] 4. ACTIVADO. Transfiriendo IP REAL {ip_hostil_real} al Motor de Firewall...")
                 # Llamada al módulo del Lab 7
                 aislar_atacante(ip_hostil_real) 
