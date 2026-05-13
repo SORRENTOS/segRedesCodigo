@@ -96,9 +96,9 @@ if __name__ == "__main__":
     opcion = input()
     
     payload_simulado = (
-        "[ALERTA IDS] Túnel IPv6 detectado. Origen: 2001:0db8:85a3:0000:0000:8a2e:0370:7334 "
-    "intentando sincronización con servidor interno. "
-    "Usuario RUT 12.345.678-9 autenticado en sesión paralela."
+  "[ALERTA IDS] Ataque en cadena detectado. Proxy legítimo 10.0.0.2 reenvió tráfico "
+    "desde IP hostil 185.10.20.30 hacia servidor crítico 192.168.1.1. "
+    "RUT del administrador del proxy: 11.111.111-1"
     )
 
     if opcion == "2":
