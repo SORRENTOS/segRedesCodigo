@@ -26,8 +26,13 @@ async def pipeline_defensivo(evento_crudo):
     # HITO 2.5: CAPTURA TÁCTICA DE LA IP (Visión Táctica)
     # Extraemos la IP real ANTES de que el DLP la censure 
     # ---------------------------------------------------------------------
+# ---------------------------------------------------------------------
+    # HITO 2.5: CAPTURA TÁCTICA DE LA IP (Visión Táctica)
+
     ip_real_match = re.search(r"hostil\s+((?:(?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4}|::))", evento_crudo)
-    ip_hostil_real = ip_real_match.group(0) if ip_real_match else "NO_ENCONTRADA"
+    
+
+    ip_hostil_real = ip_real_match.group(1) if ip_real_match else "NO_ENCONTRADA"
 
     if ip_hostil_real != "NO_ENCONTRADA":
         print(f" [+] IP Real capturada y retenida en memoria: {ip_hostil_real} ")

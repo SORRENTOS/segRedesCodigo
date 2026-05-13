@@ -14,7 +14,7 @@ def ofuscar_datos(log_crudo):
     try:
         patron_rut = r"\b\d{1,2}(?:\.?\d{3}){2}[-.]?[0-9kK]\b"
         log_seguro = re.sub(patron_rut, "[RUT_CENSURADO]", log_seguro)
-        patron_ip = r"hostil\s+((?:(?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4}|::))"
+        patron_ip = r'\b(?:(?:[0-9]{1,3}\.){3}[0-9]{1,3}|(?:[a-fA-F0-9]{1,4}:){1,7}[a-fA-F0-9]{1,4}|(?:[a-fA-F0-9]{1,4}:){1,7}:|(?:[a-fA-F0-9]{1,4}:){1,6}:[a-fA-F0-9]{1,4}|(?:[a-fA-F0-9]{1,4}:){1,5}(?::[a-fA-F0-9]{1,4}){1,2}|(?:[a-fA-F0-9]{1,4}:){1,4}(?::[a-fA-F0-9]{1,4}){1,3}|(?:[a-fA-F0-9]{1,4}:){1,3}(?::[a-fA-F0-9]{1,4}){1,4}|(?:[a-fA-F0-9]{1,4}:){1,2}(?::[a-fA-F0-9]{1,4}){1,5}|[a-fA-F0-9]{1,4}:(?::[a-fA-F0-9]{1,4}){1,6}|:(?::[a-fA-F0-9]{1,4}){1,7}|::)\b'
         log_seguro = re.sub(patron_ip, "[IP_CENSURADA]", log_seguro)
         if log_crudo == log_seguro:
            print("[!] INFO: No se detectaron cambios (Datos no encontrados o ya limpios).")
